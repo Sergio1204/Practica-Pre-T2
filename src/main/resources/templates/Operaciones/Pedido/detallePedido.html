@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<div class="card text-center">
+			<div class="card-header">
+				<h1> Informacion de Pedido </h1>
+			</div>
+			<div class="card-body">
+
+				<form>
+				
+					<div class="form-row" align=left>
+						<div class="form-group col-md-6">
+							<label for="codigoP">Codigo Pedido: </label> <input type="text"
+								class="form-control" th:value="${pedido.codPedido}" readonly="readonly">
+						</div>
+						
+						<div class="form-group col-md-6" align=left>
+							<label for="fechaEmision">Fecha de Emision: </label> <input
+								type="text" class="form-control" th:field="${pedido.fechaEmisionP}" readonly="readonly">
+						</div>
+					</div>
+				</form>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Nombre de Producto</th>
+							<th scope="col">Precio</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="prod: ${pedido.productos}">
+						<tr>
+							<th scope="row" th:text="${prod.codProd}">1</th>
+							<td th:text="${prod.nomProd}">Mark</td>
+							<td th:text="${prod.precioUnitario}">Otto</td>
+						</tr>
+					</tbody>
+				</table>
+					<a th:href="@{/medico}" class="btn btn-dark"> <i> <i class="fas fa-angle-left"></i></i> Regresar </a>
+			</div>
+
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

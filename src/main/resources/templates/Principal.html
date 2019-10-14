@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<style>
+body {background-color: #e6e6ff}
+div#1{background-color:red}
+div#2{background-color:blue}
+</style>
+<body bgcolor="red">
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<div class="row">
+			<div id="1" class="col"></div>
+			<div id="2" class="col"></div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

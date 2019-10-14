@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<div class="card text-center">
+			<div class="card-header">
+				<h1> Pedidos </h1>
+			</div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">Fecha de Emision</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="pedido: ${pedidos}">
+						<tr>
+							<th scope="row" th:text="${pedido.codPedido}">1</th>
+							<td th:text="${pedido.fechaEmisionP}">Mark</td>
+							<td>
+								<a th:href="@{'/Pedidos/detallePedido/' + ${pedido.codPedido} }" class="btn btn-warning"><i class="fas fa-info"></i></a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+					<a th:href="@{/principal}" class="btn btn-dark"> <i> <i class="fas fa-angle-left"></i></i>  </a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

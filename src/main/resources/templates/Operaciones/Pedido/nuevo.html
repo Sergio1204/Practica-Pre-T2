@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layout/layout :: head">
+<meta charset="UTF-8">
+</head>
+
+<style>
+body {
+	background-color: #e6e6ff
+}
+</style>
+
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<h1 align="center">Lista de Productos</h1>
+
+		<div class="card text-center">
+			<div class="card-header"></div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Nombre</th>
+							<th scope="col">Precio</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="prod: ${productos}">
+						<tr>
+							<th scope="row" th:text="${prod.codProd}"></th>
+							<td th:text="${prod.nomProd}"></td>
+							<td th:text="${prod.precioUnitario}"></td>
+							<td><a th:href="@{'/Productos/carrito/' + ${prod.codProd}}"
+								class="btn btn-info"><i class="fas fa-cart-plus"></i></a></td>
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/Productos}" class="btn btn-danger"><i
+					class="fas fa-times-circle"></i> Cancelar Pedido</a>
+			</div>
+		</div>
+
+		
+		<h1 align="center">Detalle de Pedido</h1>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th scope="col">Nombre</th>
+					<th scope="col">Precio</th>
+					<th scope="col"></th>
+				</tr>
+			</thead>
+			<tbody th:each="produ: ${productosPedido}">
+				<tr>
+					<th scope="row" th:text="${produ.nomProd}"></th>
+					<td th:text="${produ.precioUnitario}"></td>
+					<td><a th:href="@{'/Productos/delPedido/' + ${produ.codProd}}"
+						class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+				</tr>
+			</tbody>
+		</table>
+		
+			<div class="card-footer text-muted">
+				<a th:href="@{/Productos/confirmarP}" class="btn btn-success"><i class="fas fa-clipboard-check"></i> Confirmar Pedido</a>
+			</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
